@@ -4,6 +4,7 @@
   max-width: 320px;
   background-size: 320px 230px;
   padding: 40px 20px 92px;
+  position: relative;
 
   @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
@@ -38,6 +39,19 @@
 
   &__logo {
     color: rgba(129, 129, 129, 1);
+  }
+
+  &__title {
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: block;
+      color: var(--header-text-color);
+      @include font(30px, 500, 35px, normal);
+      position: absolute;
+      top: 35px;
+      left: 64px;
+    }
   }
 
   &__nav {
