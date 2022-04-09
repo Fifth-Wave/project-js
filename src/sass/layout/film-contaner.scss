@@ -1,0 +1,44 @@
+.film-container {
+  padding-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 20px;
+    padding-bottom: 60px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding-top: 28px;
+    padding-bottom: 60px;
+  }
+  .card {
+    padding-top: 20px;
+
+    @media screen and (min-width: 1024px) {
+      padding-top: 32px;
+    }
+  }
+
+  .card-pic {
+    max-width: 280px;
+
+    @media screen and (min-width: 768px) {
+      max-width: 336px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      max-width: 309px;
+    }
+  }
+
+  .card__title {
+    padding-top: 10px;
+    @include font(12px, 500, 14px, normal);
+    color: var(--primary-text-color);
+    text-transform: uppercase;
+  }
+
+  .card__genre {
+    @include font(12px, 500, 16px, normal);
+    color: var(--accent-color);
+  }
+}
