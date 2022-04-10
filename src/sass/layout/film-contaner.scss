@@ -39,7 +39,47 @@
   }
 
   .pagination {
-    padding: 40px 0px;
+    display: flex;
+    justify-content: center;
     text-align: center;
+    padding: 40px 0px;
+
+    &-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-position: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      overflow: hidden;
+      &:first-child {
+        background-image: url(/images/arrow-left.svg);
+        background-repeat: no-repeat;
+        background-color: var(--third-bgd-color);
+      }
+
+      &:last-child {
+        background-image: url(/images/arrow-right.svg);
+        background-repeat: no-repeat;
+        background-color: var(--third-bgd-color);
+      }
+    }
+    &-link {
+      padding: 20px 20px;
+    }
+
+    .selected {
+      background-color: var(--accent-color);
+    }
+
+    .tripledot {
+      display: none;
+
+      @media screen and (min-width: 786px) {
+        display: flex;
+        align-items: center;
+      }
+    }
   }
 }
