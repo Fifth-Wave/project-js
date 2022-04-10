@@ -1,14 +1,10 @@
 .film-container {
-  padding-bottom: 40px;
-
   @media screen and (min-width: 768px) {
     padding-top: 20px;
-    padding-bottom: 60px;
   }
 
   @media screen and (min-width: 1024px) {
     padding-top: 28px;
-    padding-bottom: 60px;
   }
   .card {
     padding-top: 20px;
@@ -40,5 +36,10 @@
   .card__genre {
     @include font(12px, 500, 16px, normal);
     color: var(--accent-color);
+  }
+
+  .pagination {
+    padding: 40px 0px;
+    text-align: center;
   }
 }
