@@ -26,7 +26,9 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "ajax": "^0.0.4",
     "animate.css": "^4.1.1",
+    "elements": "^0.6.0",
     "jquery": "^3.6.0"
   }
 }
