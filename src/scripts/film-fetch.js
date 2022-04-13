@@ -1,13 +1,12 @@
 import { elem } from './elements';
-import apiService from './api-services';
+import ApiService from './api-services';
+import apiData from './tmbd-api-data';
 
-const api = new apiService();
-
-console.log(api);
-
+const api = new ApiService(apiData.url, apiData.key);
+api.fetchPopular();
 elem.form.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
   event.preventDefault();
-  console.log(e.currentTarget.value);
+  api.fetchPopular();
 }

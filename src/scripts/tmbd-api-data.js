@@ -1,6 +1,6 @@
-export default apiData = {
+export default {
   key: 'fa8500910e8a81cbb0b768cceaccae38',
-  url: 'https://api.themoviedb.org/3/movie/550?',
-  readAccessToken:
-    'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmYTg1MDA5MTBlOGE4MWNiYjBiNzY4Y2NlYWNjYWUzOCIsInN1YiI6IjYyNTNkMzA4YWI2ODQ5MDY1NDk4NDg5YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lVLvItUMlUwvt_HQ1GEhFPPyjyj-LenFIjCxSVQkEEs',
+  url: 'https://api.themoviedb.org/3',
+  base_img_url: 'http://image.tmdb.org/t/p/',
+  poster_sizes: ['w92', 'w154', 'w185', 'w342', 'w500', 'w780', 'original'],
 };
