@@ -56,6 +56,12 @@
     color: var(--accent-color);
   }
 
+  .isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
   .pagination {
     display: flex;
     justify-content: center;

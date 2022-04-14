@@ -25,13 +25,30 @@ export default class ApiService {
       { id: 10752, name: 'War' },
       { id: 37, name: 'Western' },
     ];
+    this.currLink = '';
   }
 
   currentPage = 0;
   totalPages = 0;
 
   fetchPopular() {
-    fetch(`${this.url}/discover/movie?api_key=${this.key}&sort_by=popularity.desc`)
+    fetch(`${this.url}/discover/movie?api_key=${this.key}&sort_by=popularity.desc&page=1`)
+      .then(data => {
+        this.currLink = `${this.url}/discover/movie?api_key=${this.key}&sort_by=popularity.desc&page=`;
+        if (!data.ok) {
+          throw new Error(data.status);
+        }
+        return data.json();
+      })
+      .then(data => {
+        this.currentPage = data.page;
+        filmListRender(data.results, this.genresList);
+      })
+      .catch(console.log);
+  }
+
+  fetchPage(num) {
+    fetch(`${this.currLink}${num}`)
       .then(data => {
         if (!data.ok) {
           throw new Error(data.status);
