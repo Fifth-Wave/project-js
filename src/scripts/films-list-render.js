@@ -3,7 +3,7 @@ import { elem } from './dom-elements.js';
 import apiData from './tmbd-api-data';
 
 export const filmListRender = function (results, genresList) {
-  const filmElList = results.map(e => filmCardRender(e, genresList));
+  const filmElList = results.map(e => filmCardRender(e, genresList)).join('');
   elem.filmContainer.insertAdjacentHTML('afterbegin', filmElList);
 };
 
