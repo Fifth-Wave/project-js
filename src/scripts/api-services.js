@@ -26,10 +26,8 @@ export default class ApiService {
       { id: 37, name: 'Western' },
     ];
     this.currLink = '';
+    this.totalPages;
   }
-
-  currentPage = 0;
-  totalPages = 0;
 
   fetchPopular() {
     fetch(`${this.url}/discover/movie?api_key=${this.key}&sort_by=popularity.desc&page=1`)
@@ -41,7 +39,8 @@ export default class ApiService {
         return data.json();
       })
       .then(data => {
-        this.currentPage = data.page;
+        this.totalPages = data.total_pages;
+
         filmListRender(data.results, this.genresList);
       })
       .catch(console.log);

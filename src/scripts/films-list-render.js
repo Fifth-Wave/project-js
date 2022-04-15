@@ -5,14 +5,14 @@ import apiData from './tmbd-api-data';
 export const filmListRender = function (results, genresList) {
   const filmElList = results.map(e => filmCardRender(e, genresList)).join('');
   filmListReset();
-  filmListUpdate();
+  filmListUpdate(filmElList);
 };
 
-const filmListReset = function () {
+export const filmListReset = function () {
   elem.filmContainer.innerHTML = '';
 };
 
-const filmListUpdate = function () {
+const filmListUpdate = function (filmElList) {
   elem.filmContainer.insertAdjacentHTML('afterbegin', filmElList);
 };
 
