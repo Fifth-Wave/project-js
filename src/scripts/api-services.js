@@ -1,5 +1,5 @@
 import { filmListRender } from './films-list-render';
-import { pagination } from './pagination';
+import { instance } from './fetch-films';
 
 export default class ApiService {
   constructor(url, key) {
@@ -61,17 +61,17 @@ export default class ApiService {
   }
 
   fetchFilm(keyWords) {
-    fetch(`${this.url}/discover/movie?api_key=${this.key}&query=${keyWords}&page=1`)
+    fetch(`${this.url}/search/movie?api_key=${this.key}&query=${keyWords}&page=1`)
       .then(data => {
-        this.currLink = `${this.url}/discover/movie?api_key=${this.key}&query=${keyWords}&page=`;
+        this.currLink = `${this.url}/search/movie?api_key=${this.key}&query=${keyWords}&page=`;
         if (!data.ok) {
           throw new Error(data.status);
         }
         return data.json();
       })
       .then(data => {
-        this.totalPages = data.total_pages > 20 ? 20 : data.total_pages;
         filmListRender(data, this.genresList);
+        instance.reset(data.total_results);
       })
       .catch(console.log);
   }

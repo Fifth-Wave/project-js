@@ -20,6 +20,17 @@ const filmCardRender = function (
   { poster_path, original_title, genre_ids, release_date },
   genresList,
 ) {
+  if (!release_date) {
+    return {
+      imgUrl: `${apiData.BASE_IMG_URL}${poster_path}`,
+      filmTitle: original_title.slice(0, 30),
+      filmGenre: genresList
+        .filter(e => genre_ids.includes(e.id))
+        .map(e => e.name)
+        .join(', '),
+      filmYear: 'unknown',
+    };
+  }
   return filmCard({
     imgUrl: `${apiData.BASE_IMG_URL}${poster_path}`,
     filmTitle: original_title.slice(0, 30),

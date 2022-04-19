@@ -6,7 +6,7 @@ import apiData from './tmbd-api-data';
 
 const api = new ApiService(apiData.url, apiData.key);
 const container = document.getElementById('tui-pagination-container');
-const instance = new Pagination(container, pagOptions);
+export const instance = new Pagination(container, pagOptions);
 api.fetchPopular();
 
 instance.on('afterMove', event => {
@@ -17,7 +17,10 @@ instance.on('afterMove', event => {
 elem.form.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
-  event.preventDefault();
-
-  api.fetchFilm();
+  e.preventDefault();
+  const keyWords = e.currentTarget.searchKeyWords.value.trim();
+  if (keyWords) {
+    api.fetchFilm(keyWords);
+  }
+  e.currentTarget.reset();
 }
