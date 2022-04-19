@@ -18,5 +18,6 @@ elem.form.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
   event.preventDefault();
+
   api.fetchFilm();
 }
