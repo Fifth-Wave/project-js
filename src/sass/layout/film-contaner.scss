@@ -62,7 +62,7 @@
     opacity: 0.5;
   }
 
-  #pagination {
+  .pagination {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -79,13 +79,13 @@
       border-radius: 5px;
       overflow: hidden;
     }
-    #arrow-left {
+    .arrow-prev {
       background-image: url(/images/arrow-left.svg);
       background-repeat: no-repeat;
       background-color: var(--third-bgd-color);
     }
 
-    #arrow-right {
+    .arrow-next {
       background-image: url(/images/arrow-right.svg);
       background-repeat: no-repeat;
       background-color: var(--third-bgd-color);
@@ -95,9 +95,24 @@
       background-color: var(--accent-color);
     }
 
-    .tripledot {
+    .trippledot {
       display: none;
+      @media screen and (min-width: 786px) {
+        display: flex;
+        align-items: center;
+      }
+    }
 
+    .trippledot-first,
+    .trippledot-last {
+      // background-image: url(/images/trippledot.svg);
+      // background-repeat: no-repeat;
+      display: none;
+    }
+
+    #first,
+    #last {
+      display: none;
       @media screen and (min-width: 786px) {
         display: flex;
         align-items: center;

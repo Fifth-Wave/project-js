@@ -1,4 +1,5 @@
 import { filmListRender } from './films-list-render';
+import { pagination } from './pagination';
 
 export default class ApiService {
   constructor(url, key) {
@@ -39,9 +40,8 @@ export default class ApiService {
         return data.json();
       })
       .then(data => {
-        this.totalPages = data.total_pages;
-
-        filmListRender(data.results, this.genresList);
+        this.totalPages = data.total_pages > 20 ? 20 : data.total_pages;
+        filmListRender(data, this.genresList);
       })
       .catch(console.log);
   }
@@ -55,7 +55,7 @@ export default class ApiService {
         return data.json();
       })
       .then(data => {
-        filmListRender(data.results, this.genresList);
+        filmListRender(data, this.genresList);
       })
       .catch(console.log);
   }
