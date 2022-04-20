@@ -1,0 +1,39 @@
+.hero__button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .button {
+    margin-top: 63px;
+    width: 129.53px;
+    height: 44px;
+    border-radius: 5px;
+    border: 1px solid;
+    @include font(12px, 500, 16px, normal);
+    font-family: 'Roboto';
+    text-transform: uppercase;
+    color: var(--header-text-color);
+    background: none;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+      @media screen and (min-width: 768px) {
+        margin-right: 32px;
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      width: 152px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: 148px;
+      height: 42px;
+    }
+  }
+  .button-selected {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+  }
+}
