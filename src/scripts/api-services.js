@@ -1,5 +1,6 @@
 import { filmListRender } from './films-list-render';
 import { instance } from './fetch-films';
+import { modalRender } from './modal';
 
 export default class ApiService {
   constructor(url, key, genresList) {
@@ -8,6 +9,7 @@ export default class ApiService {
     this.genresList = genresList;
     this.currLink = '';
     this.totalPages;
+    this.currFilm;
   }
 
   fetchPopular() {
@@ -17,11 +19,13 @@ export default class ApiService {
         if (!data.ok) {
           throw new Error(data.status);
         }
+
         return data.json();
       })
       .then(data => {
         this.totalPages = data.total_pages > 20 ? 20 : data.total_pages;
         filmListRender(data, this.genresList);
+        console.log(data);
       })
       .catch(console.log);
   }
@@ -52,6 +56,22 @@ export default class ApiService {
       .then(data => {
         filmListRender(data, this.genresList);
         instance.reset(data.total_results);
+      })
+      .catch(console.log);
+  }
+
+  fetchByID(movieID) {
+    fetch(`${this.url}/movie/${movieID}?api_key=${this.key}`)
+      .then(data => {
+        if (!data.ok) {
+          throw new Error(data.status);
+        }
+        return data.json();
+      })
+      .then(data => {
+        this.currFilm = data;
+
+        modalRender(data);
       })
       .catch(console.log);
   }

@@ -17,27 +17,33 @@ const filmListUpdate = function (filmElList) {
 };
 
 const filmCardRender = function (
-  { poster_path, original_title, genre_ids, release_date },
+  { poster_path, original_title, genre_ids, release_date, id },
   genresList,
 ) {
   if (!release_date) {
     return {
       imgUrl: `${apiData.BASE_IMG_URL}${poster_path}`,
-      filmTitle: original_title.slice(0, 30),
+      filmTitle: original_title.slice(0, 25),
       filmGenre: genresList
+
         .filter(e => genre_ids.includes(e.id))
         .map(e => e.name)
+        .slice(0, 4)
         .join(', '),
       filmYear: 'unknown',
+      movieID: id,
     };
   }
   return filmCard({
     imgUrl: `${apiData.BASE_IMG_URL}${poster_path}`,
-    filmTitle: original_title.slice(0, 30),
+    filmTitle: original_title.slice(0, 25),
     filmGenre: genresList
+
       .filter(e => genre_ids.includes(e.id))
       .map(e => e.name)
+      .slice(0, 4)
       .join(', '),
     filmYear: release_date.split('').splice(0, 4).join(''),
+    movieID: id,
   });
 };
