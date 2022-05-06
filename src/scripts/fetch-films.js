@@ -7,6 +7,7 @@ import apiData from './tmbd-api-data';
 export const api = new ApiService(apiData.url, apiData.key, apiData.genresList);
 
 export const instance = new Pagination(elem.container, pagOptions);
+
 api.fetchPopular();
 
 instance.on('afterMove', event => {

@@ -3,13 +3,12 @@ import { filmListRender } from './films-list-render';
 import { pagOptions } from './pagination.js';
 import apiData from './tmbd-api-data';
 
-const LOCAL_STORAGE_KEY = 'my-library';
-const myLibraryStorage = localStorage.getItem(LOCAL_STORAGE_KEY);
 const genresList = apiData.genresList;
-let currLocalStorageKey = LOCAL_STORAGE_KEY + '1';
+
+const myLibraryStorage = localStorage.getItem('watchedFilms');
 
 if (myLibraryStorage) {
-  const data = myLibraryStorage.JSON.parse();
+  const data = JSON.parse(myLibraryStorage);
   filmListRender(data, genresList);
   const options = {
     ...pagOptions,
