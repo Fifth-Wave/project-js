@@ -1,22 +1,33 @@
-export function ifFilmWatched(id) {
+export function localStorageSearch(id) {
   const watchedFilms = JSON.parse(localStorage.getItem('watchedFilms'));
+  const queueFilms = JSON.parse(localStorage.getItem('queueFilms'));
 
-  if (!watchedFilms) {
+  if (!watchedFilms && !queueFilms) {
     localStorage.setItem('watchedFilms', JSON.stringify([]));
+    localStorage.setItem('queueFilms', JSON.stringify([]));
     return false;
   }
 
-  if (!watchedFilms.length) {
-    return false;
-  }
+  const reply = {
+    film: '',
+    watched: 'false',
+    queue: 'false',
+  };
 
   const filmWatched = findFilm(watchedFilms, id);
+  const filmQueue = findFilm(queueFilms, id);
 
   if (filmWatched) {
-    return filmWatched;
+    reply.film = filmWatched;
+    reply.watched = 'true';
   }
 
-  return false;
+  if (filmQueue) {
+    reply.film = filmQueue;
+    reply.queue = 'true';
+  }
+
+  return reply;
 }
 
 const findFilm = (watchedFilms, id) => {
@@ -30,6 +41,7 @@ const findFilm = (watchedFilms, id) => {
 };
 
 export function saveFilm(localStorageKey, data) {
+  data.genre_ids = data.genres.map(i => i.id);
   const watchedFilms = JSON.parse(localStorage.getItem(localStorageKey));
   watchedFilms.push(data);
   const newObj = JSON.stringify(watchedFilms);
@@ -38,7 +50,12 @@ export function saveFilm(localStorageKey, data) {
 
 export function removeFilm(localStorageKey, { id }) {
   const watchedFilms = JSON.parse(localStorage.getItem(localStorageKey));
-  console.log(watchedFilms);
   const newObj = JSON.stringify(watchedFilms.filter(i => i.id !== Number(id)));
   localStorage.setItem(localStorageKey, newObj);
+}
+
+export function LocalStorageTotalItems(localStorageKey) {
+  const storedFilms = JSON.parse(localStorage.getItem(localStorageKey));
+
+  return storedFilms.length;
 }

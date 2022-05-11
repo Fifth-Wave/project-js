@@ -24,8 +24,8 @@ export default class ApiService {
       })
       .then(data => {
         this.totalPages = data.total_pages > 20 ? 20 : data.total_pages;
-        filmListRender(data, this.genresList);
-        console.log(data);
+        filmListRender(data.results, this.genresList);
+        console.log(data.results);
       })
       .catch(console.log);
   }
@@ -39,7 +39,7 @@ export default class ApiService {
         return data.json();
       })
       .then(data => {
-        filmListRender(data, this.genresList);
+        filmListRender(data.results, this.genresList);
       })
       .catch(console.log);
   }
@@ -70,7 +70,6 @@ export default class ApiService {
       })
       .then(data => {
         this.currFilm = data;
-
         modalRender(data);
       })
       .catch(console.log);

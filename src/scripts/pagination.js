@@ -1,6 +1,6 @@
 export const pagOptions = {
   totalItems: 400,
-  itemsPerPage: 20,
+  itemsPerPage: 18,
   visiblePages: 5,
   page: 1,
   centerAlign: false,

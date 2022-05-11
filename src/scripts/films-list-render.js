@@ -2,8 +2,8 @@ import filmCard from './film-card.hbs';
 import { elem } from './dom-elements.js';
 import apiData from './tmbd-api-data';
 
-export const filmListRender = function (data, genresList) {
-  const filmElList = data.results.map(e => filmCardRender(e, genresList)).join('');
+export const filmListRender = function (results, genresList) {
+  const filmElList = results.map(e => filmCardRender(e, genresList)).join('');
   filmListReset();
   filmListUpdate(filmElList);
 };
@@ -12,11 +12,11 @@ export const filmListReset = function () {
   elem.filmContainer.innerHTML = '';
 };
 
-const filmListUpdate = function (filmElList) {
+export const filmListUpdate = function (filmElList) {
   elem.filmContainer.insertAdjacentHTML('afterbegin', filmElList);
 };
 
-const filmCardRender = function (
+export const filmCardRender = function (
   { poster_path, original_title, genre_ids, release_date, id },
   genresList,
 ) {
