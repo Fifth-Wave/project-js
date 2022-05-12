@@ -69,7 +69,6 @@ export default class ApiService {
         return data.json();
       })
       .then(data => {
-        this.currFilm = data;
         modalRender(data);
       })
       .catch(console.log);

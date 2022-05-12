@@ -1,23 +1,19 @@
 import { elem } from './dom-elements';
-import { api } from './fetch-films';
 import modalCard from './modal.hbs';
 import apiData from './tmbd-api-data';
 import { localStorageSearch, saveFilm, removeFilm } from './local-storage';
-
-elem.filmContainer.addEventListener('click', onClickDocument);
+import { myLibraryRender, currentPage, currentTab } from '../scripts/my-library-films-list-render';
+// elem.filmContainer.addEventListener('click', onClickDocument);
 
 let filmFound = {};
 
-function onClickDocument(e) {
+export function onClickDocument(e) {
   const selectedEl = e.path
     .filter(i => i.nodeName === 'DIV')
     .filter(i => i.classList.contains('card'))[0];
 
   if (selectedEl) {
     const movieID = selectedEl.dataset.movieid;
-
-    //check if already exist in local storage
-    //if yes render it
     filmFound = localStorageSearch(movieID);
     const { film, watched, queue } = filmFound;
 
@@ -31,12 +27,9 @@ function onClickDocument(e) {
       if (queue === 'true') {
         setBtnWatched(elem.modalBtnQueue);
       }
-    } else {
-      //if no
-      api.fetchByID(movieID);
     }
 
-    elem.filmContainer.removeEventListener('click', onClickDocument);
+    elem.myLibFilmContainer.removeEventListener('click', onClickDocument);
   }
 }
 
@@ -50,6 +43,8 @@ function onClick(e) {
     elem.modalContainer.removeEventListener('click', onClick);
     document.removeEventListener('keydown', onClick);
     elem.filmContainer.addEventListener('click', onClickDocument);
+    myLibraryRender(currentTab, currentPage);
+    console.log(currentTab, currentPage);
     return;
   }
 
