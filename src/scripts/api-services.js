@@ -54,7 +54,7 @@ export default class ApiService {
         return data.json();
       })
       .then(data => {
-        filmListRender(data, this.genresList);
+        filmListRender(data.results, this.genresList);
         instance.reset(data.total_results);
       })
       .catch(console.log);
