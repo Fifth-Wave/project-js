@@ -5,7 +5,7 @@ export function localStorageSearch(id) {
   if (!watchedFilms && !queueFilms) {
     localStorage.setItem('watchedFilms', JSON.stringify([]));
     localStorage.setItem('queueFilms', JSON.stringify([]));
-    return false;
+    return { film: false };
   }
 
   const reply = {
