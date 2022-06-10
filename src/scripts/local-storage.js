@@ -5,6 +5,7 @@ export function localStorageSearch(id) {
   if (!watchedFilms && !queueFilms) {
     localStorage.setItem('watchedFilms', JSON.stringify([]));
     localStorage.setItem('queueFilms', JSON.stringify([]));
+    console.log('local storage created');
     return { film: false };
   }
 

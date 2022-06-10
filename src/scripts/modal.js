@@ -107,7 +107,6 @@ const setBtnNotWatched = btn => {
 };
 
 export function modalRender(film) {
-  console.log(film);
   const {
     overview,
     popularity,

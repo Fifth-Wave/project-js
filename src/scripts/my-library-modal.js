@@ -44,7 +44,7 @@ function onClick(e) {
     document.removeEventListener('keydown', onClick);
     elem.filmContainer.addEventListener('click', onClickDocument);
     myLibraryRender(currentTab, currentPage);
-    console.log(currentTab, currentPage);
+
     return;
   }
 

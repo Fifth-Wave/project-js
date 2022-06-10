@@ -15,18 +15,23 @@ document.addEventListener('click', onFilterClick);
 elem.myLibFilmContainer.addEventListener('click', onClickDocument);
 
 const genresList = apiData.genresList;
-const myLibraryStorageWatched = localStorage.getItem('watchedFilms');
-const myLibraryStorageQueue = localStorage.getItem('queueFilms');
+let myLibraryStorageWatched = localStorage.getItem('watchedFilms');
+let myLibraryStorageQueue = localStorage.getItem('queueFilms');
+if (!myLibraryStorageWatched && !myLibraryStorageQueue) {
+  localStorage.setItem('watchedFilms', JSON.stringify([]));
+  localStorage.setItem('queueFilms', JSON.stringify([]));
+  myLibraryStorageWatched = [];
+  myLibraryStorageQueue = [];
+}
 export let currentTab = 'watchedFilms';
 export let currentPage = 1;
-myLibraryRender(currentTab, 1);
-
 const options = {
   ...pagOptions,
   totalItems: LocalStorageTotalItems(currentTab),
   page: 1,
 };
 const instanceLibrary = new Pagination(elem.container, options);
+myLibraryRender(currentTab, 1);
 
 instanceLibrary.on('afterMove', event => {
   currentPage = event.page;
