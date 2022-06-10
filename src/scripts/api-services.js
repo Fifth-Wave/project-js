@@ -25,7 +25,6 @@ export default class ApiService {
       .then(data => {
         this.totalPages = data.total_pages > 20 ? 20 : data.total_pages;
         filmListRender(data.results, this.genresList);
-        console.log(data.results);
       })
       .catch(console.log);
   }
