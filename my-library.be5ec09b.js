@@ -28,4 +28,4 @@ var t;!function(e,n){"object"==typeof exports&&"object"==typeof module?module.ex
 },{"./dom-elements.js":"BO5T","./films-list-render":"ONK5","./pagination.js":"fZBP","./tmbd-api-data":"Lc6R","tui-pagination":"jPMh","./local-storage":"g0in","./my-library-modal":"ewOW"}],"bcKP":[function(require,module,exports) {
 "use strict";require("/sass/main.scss"),require("./scripts/my-library-films-list-render");
 },{"/sass/main.scss":"clu1","./scripts/my-library-films-list-render":"w82A"}]},{},["bcKP"], null)
-//# sourceMappingURL=/project-js/my-library.554968d1.js.map
+//# sourceMappingURL=/project-js/my-library.be5ec09b.js.map
