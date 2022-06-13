@@ -39,8 +39,8 @@ instanceLibrary.on('afterMove', event => {
 });
 
 export function myLibraryRender(localStorageName, pageNumber) {
-  const StoredFils = localStorage.getItem(localStorageName);
-  const data = JSON.parse(StoredFils);
+  const StoredFilms = localStorage.getItem(localStorageName);
+  const data = JSON.parse(StoredFilms);
   if (!data) {
     filmListReset();
     return;

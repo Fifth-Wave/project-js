@@ -3,6 +3,7 @@ import { elem } from './dom-elements.js';
 import apiData from './tmbd-api-data';
 
 export const filmListRender = function (results, genresList) {
+  console.log(results);
   const filmElList = results.map(e => filmCardRender(e, genresList)).join('');
   filmListReset();
   filmListUpdate(filmElList);
@@ -34,6 +35,7 @@ export const filmCardRender = function (
       movieID: id,
     };
   }
+
   return filmCard({
     imgUrl: `${apiData.BASE_IMG_URL}${poster_path}`,
     filmTitle: original_title.slice(0, 25),
